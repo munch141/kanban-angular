@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+
+@tailwind components;
+
+.column {
+  @apply w-64 rounded m-4 px-4 py-3 box-border;
+}
+
+@tailwind utilities;

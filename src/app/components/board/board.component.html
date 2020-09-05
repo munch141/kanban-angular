@@ -1,0 +1,19 @@
+<div
+  cdkDropList
+  class="w-auto h-auto flex flex-row overflow-hidden"
+  cdkDropListOrientation="horizontal"
+  (cdkDropListDropped)="drop($event)"
+>
+  <div
+    *ngFor="let title of columns"
+    class="column cursor-move bg-white shadow-md"
+    cdkDrag
+  >
+    <app-column title="{{ title }}"></app-column>
+
+    <div
+      class="column bg-gray-400 border-dotted border-4 border-gray-600"
+      *cdkDragPlaceholder
+    ></div>
+  </div>
+</div>
