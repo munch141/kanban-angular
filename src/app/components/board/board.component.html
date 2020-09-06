@@ -8,13 +8,13 @@
 
   <div
     cdkDropList
-    class="w-content min-h-column flex flex-row overflow-hidden"
+    class="w-content flex flex-row overflow-hidden"
     cdkDropListOrientation="horizontal"
     (cdkDropListDropped)="drop($event)"
   >
     <div
       *ngFor="let column of columns"
-      class="column cursor-move bg-white shadow-md min-h-column"
+      class="column cursor-move bg-white shadow-md"
       cdkDrag
     >
       <app-column
@@ -23,7 +23,7 @@
       ></app-column>
 
       <div
-        class="column bg-gray-400 border-dotted border-4 border-gray-600 min-h-column"
+        class="column bg-gray-400 border-dotted border-4 border-gray-600"
         *cdkDragPlaceholder
       ></div>
     </div>
