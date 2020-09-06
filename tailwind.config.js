@@ -9,6 +9,9 @@ module.exports = {
         salmon: "#F38375",
         opal: "#EF6351",
       },
+      width: {
+        content: "max-content",
+      },
     },
     minHeight: {
       0: "0",
@@ -16,6 +19,7 @@ module.exports = {
       "1/2": "50%",
       "3/4": "75%",
       full: "100%",
+      column: "16rem",
     },
   },
   variants: {},

@@ -3,7 +3,7 @@
 @tailwind components;
 
 .column {
-  @apply w-64 rounded m-4 px-4 py-3 box-border;
+  @apply w-64 rounded my-4 mr-4 px-4 py-3 box-border;
 }
 
 @tailwind utilities;

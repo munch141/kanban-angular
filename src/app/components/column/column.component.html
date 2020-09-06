@@ -1,3 +1,8 @@
-{{ title }}
+<div class="flex flex-row justify-between">
+  <h3>{{ column.title }}</h3>
+  <button class="bg-none text-gray-500 hover:text-gray-600">
+    <fa-icon [icon]="faTimes" size="lg" (click)="onClickDelete()"></fa-icon>
+  </button>
+</div>
 
-<div class="w-full h-64">content</div>
+<div class="w-full">content</div>
