@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from "@angular/core";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'app-add-column',
-  templateUrl: './add-column.component.html',
-  styleUrls: ['./add-column.component.css']
+  selector: "app-add-column",
+  templateUrl: "./add-column.component.html",
+  styleUrls: ["./add-column.component.css"],
 })
 export class AddColumnComponent implements OnInit {
+  @Output() addColumn = new EventEmitter();
 
-  constructor() { }
+  faPlus = faPlus;
 
-  ngOnInit(): void {
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  onClickAddColumn() {
+    this.addColumn.emit();
   }
-
 }

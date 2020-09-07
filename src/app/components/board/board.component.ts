@@ -8,7 +8,7 @@ import { Column } from "../column/column.model";
   styleUrls: ["./board.component.scss"],
 })
 export class BoardComponent implements OnInit {
-  columns: Column[] = [new Column(1, "column 1")];
+  columns: Column[] = [];
   columnsCreated: number = 1;
 
   constructor() {}
@@ -20,7 +20,7 @@ export class BoardComponent implements OnInit {
     console.log(this.columns);
   }
 
-  onClick() {
+  onAddColumn() {
     this.columnsCreated++;
     this.columns.push(
       new Column(this.columnsCreated, `column ${this.columnsCreated}`)

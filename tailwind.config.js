@@ -19,8 +19,11 @@ module.exports = {
       "1/2": "50%",
       "3/4": "75%",
       full: "100%",
+      placeholder: "6rem",
     },
   },
-  variants: {},
+  variants: {
+    opacity: ["responsive", "hover", "focus", "group-hover"],
+  },
   plugins: [],
 };
