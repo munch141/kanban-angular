@@ -6,16 +6,15 @@ node_js:
   - "10"
 
 addons:
-  chrome: stable
-
-before_script:
-  - LATEST_CHROMEDRIVER_VERSION=`curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE`
-  - curl https://chromedriver.storage.googleapis.com/${LATEST_CHROMEDRIVER_VERSION}/chromedriver_linux64.zip -O
-  - unzip chromedriver_linux64.zip -d ~/bin
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 
 cache:
   directories:
-    - ./node_modules
+     - ./node_modules
 
 install:
   - npm install
