@@ -1,11 +1,13 @@
 <div
-  class="column relative min-h-placeholder cursor-pointer group"
-  (click)="onClickAddColumn()"
+  class="column relative min-h-placeholder group"
 >
   <div
-    class="absolute column min-h-placeholder bg-gray-400 border-dotted border-4 border-gray-600 opacity-75 w-full h-full m-0 top-0 left-0 z-0 group-hover:opacity-100"
+    class="absolute column min-h-placeholder bg-gray-400 border-dotted border-4 border-gray-600 opacity-75 w-full h-full m-0 top-0 left-0 z-0 group-hover:opacity-100 cursor-pointer"
+    (click)="showForm=true"
   ></div>
   <span class="font-bold text-gray-700 relative z-1">
     <fa-icon [icon]="faPlus"></fa-icon> Add a column
   </span>
+
+  <app-new-column-form *ngIf="showForm" (dismiss)="showForm=false" (addColumn)="onConfirmAddColumn($event)"></app-new-column-form>
 </div>
