@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Input, Output } from "@angular/core";
 import { Post } from "../post/post.model";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Column } from "./column.model";
+import { Column } from '../../models/column.model';
 
 @Component({
   selector: "app-column",
