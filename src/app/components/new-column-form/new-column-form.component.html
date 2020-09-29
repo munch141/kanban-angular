@@ -1,12 +1,14 @@
 <div
   class="absolute column min-h-placeholder bg-white w-full h-full m-0 top-0 left-0 z-1"
 >
-  <form (ngSubmit)="onSubmit()" #columnForm="ngForm">
+  <form (ngSubmit)="handleSubmit(columnForm)" #columnForm="ngForm">
     <input
+      #title="ngModel"
       [(ngModel)]="column.title"
       name="title"
       autofocus
       required
+      autocomplete="off"
       class="appearance-none border rounded w-full py-1 px-2 text-gray-700 leading-tight focus:shadow-outline"
       id="title"
       type="text"
@@ -16,13 +18,18 @@
     <div class="mt-3">
       <button
         class="rounded bg-green-400 hover:bg-green-500 py-1 px-2 text-white font-bold mr-2"
+        [ngClass]="{
+          'cursor-not-allowed': title.invalid,
+          'opacity-50': title.invalid
+        }"
+        [disabled]="title.invalid"
         type="submit"
       >
         Add column
       </button>
       <button
         class="bg-none text-gray-500 hover:text-gray-600"
-        (click)="onDismiss()"
+        (click)="handleDismiss()"
       >
         <fa-icon [icon]="faTimes" size="lg"></fa-icon>
       </button>
