@@ -4,7 +4,7 @@
   <form (ngSubmit)="handleSubmit(columnForm)" #columnForm="ngForm">
     <input
       #title="ngModel"
-      [(ngModel)]="column.title"
+      [(ngModel)]="columnTitle"
       name="title"
       autofocus
       required

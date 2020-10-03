@@ -1,5 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { Column } from "../../models/column.model";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { NgForm } from "@angular/forms";
 
@@ -8,24 +7,20 @@ import { NgForm } from "@angular/forms";
   templateUrl: "./new-column-form.component.html",
   styleUrls: ["./new-column-form.component.css"],
 })
-export class NewColumnFormComponent implements OnInit {
+export class NewColumnFormComponent {
   @Output() dismiss = new EventEmitter();
-  @Output() addColumn = new EventEmitter<Column>();
+  @Output() addColumn = new EventEmitter<string>();
 
-  column: Column = new Column(null);
+  columnTitle: string = null;
 
   faTimes = faTimes;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   handleDismiss() {
     this.dismiss.emit();
   }
 
   handleSubmit(columnForm: NgForm) {
-    this.addColumn.emit({ ...this.column });
+    this.addColumn.emit(this.columnTitle);
     columnForm.reset();
     this.handleDismiss();
   }
