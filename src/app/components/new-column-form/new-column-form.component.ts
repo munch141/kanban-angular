@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from "@angular/core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FormBuilder, Validators } from "@angular/forms";
+import { Column } from "src/app/models/column.model";
 
 @Component({
   selector: "app-new-column-form",
@@ -9,7 +10,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 })
 export class NewColumnFormComponent {
   @Output() dismiss = new EventEmitter();
-  @Output() addColumn = new EventEmitter<string>();
+  @Output() addColumn = new EventEmitter<Column>();
 
   columnForm = this.fb.group({
     title: ["", Validators.required],
