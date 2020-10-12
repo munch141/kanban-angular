@@ -10,7 +10,7 @@ import { BoardComponent } from "./components/board/board.component";
 import { PostComponent } from "./components/post/post.component";
 import { AddColumnComponent } from "./components/add-column/add-column.component";
 import { NewColumnFormComponent } from "./components/new-column-form/new-column-form.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AutofocusDirective } from "./directives/autofocus.directive";
 
 @NgModule({
@@ -23,7 +23,13 @@ import { AutofocusDirective } from "./directives/autofocus.directive";
     NewColumnFormComponent,
     AutofocusDirective,
   ],
-  imports: [BrowserModule, DragDropModule, FontAwesomeModule, FormsModule],
+  imports: [
+    BrowserModule,
+    DragDropModule,
+    FontAwesomeModule,
+
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

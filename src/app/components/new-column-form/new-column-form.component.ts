@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from "@angular/core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { NgForm } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
+import { Column } from "src/app/models/column.model";
 
 @Component({
   selector: "app-new-column-form",
@@ -9,19 +10,25 @@ import { NgForm } from "@angular/forms";
 })
 export class NewColumnFormComponent {
   @Output() dismiss = new EventEmitter();
-  @Output() addColumn = new EventEmitter<string>();
+  @Output() addColumn = new EventEmitter<Column>();
 
-  columnTitle: string = null;
+  columnForm = this.fb.group({
+    title: ["", Validators.required],
+  });
 
   faTimes = faTimes;
 
-  handleDismiss() {
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {}
+
+  onDismiss() {
     this.dismiss.emit();
   }
 
-  handleSubmit(columnForm: NgForm) {
-    this.addColumn.emit(this.columnTitle);
-    columnForm.reset();
-    this.handleDismiss();
+  onSubmit() {
+    this.addColumn.emit(new Column(this.columnForm.value.title));
+    this.columnForm.reset();
+    this.onDismiss();
   }
 }

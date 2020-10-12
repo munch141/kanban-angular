@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
+import { Column } from "src/app/models/column.model";
 
 import { NewColumnFormComponent } from "./new-column-form.component";
 
@@ -10,28 +11,52 @@ describe("NewColumnFormComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NewColumnFormComponent],
-      imports: [FormsModule],
+      imports: [ReactiveFormsModule],
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NewColumnFormComponent);
-    component = fixture.componentInstance;
     fixture.detectChanges();
+    component = fixture.componentInstance;
+    component.ngOnInit();
   });
 
   it("should create", () => {
     expect(component).toBeTruthy();
-    expect(component.columnTitle).toBeNull();
   });
 
-  it("raises the addColumn event when submitting form", () => {
-    component.columnTitle = "Test title";
-    component.addColumn.subscribe((title: string) =>
-      expect(title).toBe(component.columnTitle)
+  it("should start as en empty form", () => {
+    expect(component.columnForm.value.title).toBe("");
+  });
+
+  it("should emit the dismiss event when the dismiss button is pressed", () => {
+    spyOn(component.dismiss, "emit");
+    const dismissButton = fixture.nativeElement.querySelector(
+      "button:not([type])"
     );
 
-    const elementRef: HTMLElement = fixture.nativeElement;
-    elementRef.querySelector<HTMLElement>('button[type="submit"]').click();
+    dismissButton.click();
+
+    expect(component.dismiss.emit).toHaveBeenCalled();
+  });
+
+  it("should emit the value entered on the input controls and dismiss the component", () => {
+    spyOn(component.addColumn, "emit");
+    spyOn(component.dismiss, "emit");
+    const testTitle = "test title";
+    const button = fixture.nativeElement.querySelector("button[type=submit]");
+    const input = fixture.nativeElement.querySelector("input");
+    input.value = testTitle;
+    input.dispatchEvent(new Event("input"));
+    fixture.detectChanges();
+
+    button.click();
+
+    expect(component.addColumn.emit).toHaveBeenCalledWith(
+      new Column(testTitle)
+    );
+
+    expect(component.dismiss.emit).toHaveBeenCalled();
   });
 });
