@@ -27,7 +27,7 @@ export class NewColumnFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.addColumn.emit({ ...this.columnForm.value });
+    this.addColumn.emit(new Column(this.columnForm.value.title));
     this.columnForm.reset();
     this.onDismiss();
   }
