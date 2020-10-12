@@ -1,5 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { Column } from "../../models/column.model";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FormBuilder, Validators } from "@angular/forms";
 
@@ -8,9 +7,9 @@ import { FormBuilder, Validators } from "@angular/forms";
   templateUrl: "./new-column-form.component.html",
   styleUrls: ["./new-column-form.component.css"],
 })
-export class NewColumnFormComponent implements OnInit {
+export class NewColumnFormComponent {
   @Output() dismiss = new EventEmitter();
-  @Output() addColumn = new EventEmitter<Column>();
+  @Output() addColumn = new EventEmitter<string>();
 
   columnForm = this.fb.group({
     title: ["", Validators.required],

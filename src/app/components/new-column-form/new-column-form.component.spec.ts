@@ -24,6 +24,17 @@ describe("NewColumnFormComponent", () => {
 
   it("should create", () => {
     expect(component).toBeTruthy();
+    expect(component.columnTitle).toBeNull();
+  });
+
+  it("raises the addColumn event when submitting form", () => {
+    component.columnTitle = "Test title";
+    component.addColumn.subscribe((title: string) =>
+      expect(title).toBe(component.columnTitle)
+    );
+
+    const elementRef: HTMLElement = fixture.nativeElement;
+    elementRef.querySelector<HTMLElement>('button[type="submit"]').click();
   });
 
   it("should start as en empty form", () => {
