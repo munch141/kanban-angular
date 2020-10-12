@@ -53,9 +53,9 @@ describe("NewColumnFormComponent", () => {
 
     button.click();
 
-    expect(component.addColumn.emit).toHaveBeenCalledWith({
-      ...new Column(testTitle),
-    });
+    expect(component.addColumn.emit).toHaveBeenCalledWith(
+      new Column(testTitle)
+    );
 
     expect(component.dismiss.emit).toHaveBeenCalled();
   });
