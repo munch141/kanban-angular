@@ -17,7 +17,7 @@ export class AddColumnComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onConfirmAddColumn(columnTitle: string) {
-    this.addColumn.emit(new Column(columnTitle));
+  onConfirmAddColumn(column: Column) {
+    this.addColumn.emit(column);
   }
 }
