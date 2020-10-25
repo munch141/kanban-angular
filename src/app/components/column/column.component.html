@@ -5,4 +5,4 @@
   </button>
 </div>
 
-<div class="w-full">{{column.id}}</div>
+<app-post *ngFor="let post of column.posts" [post]="post"></app-post>

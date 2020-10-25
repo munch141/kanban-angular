@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Input, Output } from "@angular/core";
-import { Post } from "../post/post.model";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Column } from '../../models/column.model';
+
+import { Column } from "../../models/column.model";
+import { Post } from "../../models/post.model";
 
 @Component({
   selector: "app-column",
@@ -9,16 +10,17 @@ import { Column } from '../../models/column.model';
   styleUrls: ["./column.component.scss"],
 })
 export class ColumnComponent implements OnInit {
-  faTimes = faTimes;
-
   @Input() column: Column;
   @Output() delete = new EventEmitter<number>();
 
-  posts: Post[] = [];
+  faTimes = faTimes;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.column.posts.push(new Post("this is a post"));
+    this.column.posts.push(new Post("this is another post"));
+  }
 
   onClickDelete() {
     this.delete.emit(this.column.id);
