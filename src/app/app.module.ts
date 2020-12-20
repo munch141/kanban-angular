@@ -12,6 +12,8 @@ import { AddColumnComponent } from "./components/add-column/add-column.component
 import { NewColumnFormComponent } from "./components/new-column-form/new-column-form.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AutofocusDirective } from "./directives/autofocus.directive";
+import { AddPostComponent } from './components/add-post/add-post.component';
+import { NewPostFormComponent } from './components/new-post-form/new-post-form.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { AutofocusDirective } from "./directives/autofocus.directive";
     AddColumnComponent,
     NewColumnFormComponent,
     AutofocusDirective,
+    AddPostComponent,
+    NewPostFormComponent,
   ],
   imports: [
     BrowserModule,
